@@ -12,11 +12,35 @@
     */
     protected $routes = array();
 
+
     /*
     * Parameters from the matched route
     * @var array 
     */
     protected $params = array();
+
+
+    /*
+    * Converts a string with hyphens to StudlyCaps
+    * e.g. post-authors -> PostAuthors
+    * @param string $string the string to convert
+    * @return string
+    */
+    protected function toStudlyCaps($string) {
+      return str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
+    }
+
+
+    /*
+    * Converts a string with hyphens to camelCase
+    * e.g. post-authors -> postAuthors
+    * @param string $string the string to convert
+    * @return string
+    */
+    protected function toCamelCase($string) {
+      return lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $string))));
+    }
+
 
     /*
     * Add a route to the routing table
@@ -36,6 +60,7 @@
       $this->routes[$route] = $params;
     }
 
+
     /*
     * Get all the routes from the routing table
     * @return array
@@ -43,6 +68,7 @@
     public function getRoutes() {
       return $this->routes;
     }
+
 
     /*
     * Matches the route to the routes in the routing table
@@ -65,12 +91,41 @@
       return false;
     }
 
+
     /*
     * Get the currently matched parameters
     * @return array
     */
     public function getParams() {
       return $this->params;
+    }
+
+
+    /*
+    * dispatch the route to the corresponding controller and action
+    * @param  string  $url  The route URL
+    * @return void
+    */
+    public function dispatch($url) {
+      if ($this->match($url)) {
+        $controller = $this->toStudlyCaps($this->params['controller']);
+        if (class_exists($controller)) {
+          $controllerObj = new $controller();
+          $action = $this->toCamelCase($this->params['action']);
+          if (is_callable([$controllerObj, $action])) {
+            $controllerObj->$action();
+          }
+          else {
+            echo "Error (Router - match): method $action in class $controller is not callable";
+          }
+        }
+        else {
+          echo "Error (Router - match): class $controller doesn'n exists";
+        }
+      }
+      else {
+        echo 'Error (Router - match): URL not found';
+      }
     }
 
   }
