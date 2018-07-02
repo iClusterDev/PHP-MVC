@@ -52,6 +52,7 @@ $router->add('posts', [
 // );
 
 $router->add('{controller}/{action}');
+$router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}');
 $router->add('admin/{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}/{id:\d+}');

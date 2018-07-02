@@ -117,7 +117,7 @@
         $controller = $this->toStudlyCaps($this->params['controller']);
         $controller = "App\Controllers\\$controller";
         if (class_exists($controller)) {
-          $controllerObj = new $controller();
+          $controllerObj = new $controller($this->params);
           $action = $this->toCamelCase($this->params['action']);
           if (is_callable([$controllerObj, $action])) {
             $controllerObj->$action();
@@ -135,6 +135,12 @@
       }
     }
 
+
+    /*
+    * removes the query string from URL
+    * @param  string  $url  The route URL
+    * @return string  $url the url without query string
+    */
     protected function stripQueryString($url) {
       if ($url != '') {
         $parts = explode('&', $url, 2);
