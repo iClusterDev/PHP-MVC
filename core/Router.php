@@ -1,4 +1,7 @@
 <?php
+
+  namespace Core;
+
   // NOTES
   // the Router decides which controller to use
   // based on the route coming from the URL
@@ -107,8 +110,12 @@
     * @return void
     */
     public function dispatch($url) {
+
+      $url = $this->stripQueryString($url);
+
       if ($this->match($url)) {
         $controller = $this->toStudlyCaps($this->params['controller']);
+        $controller = "App\Controllers\\$controller";
         if (class_exists($controller)) {
           $controllerObj = new $controller();
           $action = $this->toCamelCase($this->params['action']);
@@ -126,6 +133,19 @@
       else {
         echo 'Error (Router - match): URL not found';
       }
+    }
+
+    protected function stripQueryString($url) {
+      if ($url != '') {
+        $parts = explode('&', $url, 2);
+        if (strpos($parts[0], '=') === false) {
+          $url = $parts[0];
+        }
+        else {
+          $url = '';
+        }
+      }
+      return $url;
     }
 
   }

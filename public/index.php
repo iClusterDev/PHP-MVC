@@ -15,15 +15,23 @@
 /*
   Controllers
 */
-require '../app/controllers/Post.php';
+// require '../app/controllers/Post.php';
 
+spl_autoload_register(function ($class) {
+  echo 'called:' . $class . '<br>';
+  $root = dirname(__DIR__);
+  $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+  if (is_readable($file)) {
+    require $root . '/' . str_replace('\\', '/', $class) . '.php';
+  }
+});
 
 /*
   Routing
 */
-require '../core/Router.php';
+// require '../core/Router.php';
 
-$router = new Router();
+$router = new Core\Router();
 
 $router->add('', [
   'controller' => 'home', 

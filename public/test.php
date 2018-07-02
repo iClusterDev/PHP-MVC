@@ -34,25 +34,26 @@
   //   echo 'NOT a match';
   // }
 
+  // namespace Root\Test;
 
-  // $string = '{controller}/{id:\d+}/{action}';
+  // class TestClass {
 
-  // $string = preg_replace('/\//', '\\/', $string);
+  //   // to use a class not in this namespace
+  //   // you need to specify it otherwise error
+  //   // here we use DateTime in the root namespace
+  //   public function blah() {
+  //     $date = new \Date();
+  //   }
 
-  // echo $string . '<br>';
+  // }
 
-  // $string = preg_replace('/\{([a-z]+)\}/', '(?<\1>[a-z-]+)', $string);
+  // $testClass1 = new Root\Test\TestClass();
 
-  // $string = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?<\1>\2)', $string);
+  // use Root\Test as Core;
 
-  // echo htmlspecialchars(print_r($string, true));
+  // $testClass2 = new Core\TestClass();
 
-  // strings conversion
-  $string = 'posts-authors';
 
-  // echo $string;
+  // autoload
+  // spl_autoload_register()
 
-  // echo ucwords($string);
-
-  echo lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $string))));
-  
