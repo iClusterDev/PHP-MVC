@@ -1,10 +1,10 @@
 <?php
 
-  namespace App\Controllers;
+  namespace App\Controllers\Admin;
 
-  // home controller
+  // user controller
   // inherits from base controller
-  class Home extends \Core\Controller {
+  class User extends \Core\Controller {
 
     // constructor
     public function __construct($routeParams) {
@@ -13,17 +13,15 @@
 
     // indexAction
     public function indexAction() {
-      echo 'hello from Home index';
+      echo 'Hello from Admin/User.php';
     }
 
     // before action filter
     protected function before() {
-      echo '(before) ';
     }
 
-    // after action filter
+    // after action folter
     protected function after() {
-      echo ' (after)';
     }
-    
+
   }

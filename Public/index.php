@@ -12,65 +12,29 @@
   Front Controller
 */
 
-/*
-  Controllers
-*/
-// require '../app/controllers/Post.php';
-
+// controllers autoload
 spl_autoload_register(function ($class) {
-  echo 'called:' . $class . '<br>';
-  $root = dirname(__DIR__);
+  $root = str_replace('\\', '/', dirname(__DIR__));
   $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
   if (is_readable($file)) {
     require $root . '/' . str_replace('\\', '/', $class) . '.php';
   }
 });
 
-/*
-  Routing
-*/
-// require '../core/Router.php';
 
+// router setup
 $router = new Core\Router();
 
-$router->add('', [
-  'controller' => 'home', 
-  'action' => 'index'
-  ]
-);
-
-$router->add('posts', [
-  'controller' => 'posts', 
-  'action' => 'index'
-  ]
-);
-
-// $router->add('posts/new', [
-//   'controller' => 'Posts',
-//   'action' => 'new'
-//   ]
-// );
-
+$router->add('', ['controller' => 'home', 'action' => 'index']);
+$router->add('posts', ['controller' => 'posts', 'action' => 'index']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
-$router->add('admin/{controller}/{action}');
-$router->add('admin/{controller}/{id:\d+}/{action}');
-$router->add('admin/{controller}/{action}/{id:\d+}');
+$router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 
-// echo '<pre>';
-//   echo htmlspecialchars(print_r($router->getRoutes(), true));
-// echo '</pre>';
 
+// get the request url
 $url = $_SERVER['QUERY_STRING'];
 
-// if ($router->match($url)) {
-//   $params = $router->getParams();
-//   echo '<pre>';
-//     var_dump($params);
-//   echo '</pre>';
-// } 
-// else {
-//   echo 'url not found';
-// };
 
+// dispatch
 $router->dispatch($url);
