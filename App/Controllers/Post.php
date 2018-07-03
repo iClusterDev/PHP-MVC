@@ -8,18 +8,27 @@
       parent::__construct($routeParams);
     }
 
-    public function index() {
+    public function indexAction() {
       echo 'hello from Post index';
     }
 
-    public function addNew() {
+    public function addNewAction() {
       echo 'hello from Post addNew';
     }
 
-    public function edit() {
+    public function editAction() {
       echo 'Route parameters <br>';
       echo '<pre>';
         htmlspecialchars(print_r($this->routeParams));
       echo '<pre>';
     }
+
+    protected function before() {
+      echo '(before) ';
+    }
+
+    protected function after() {
+      echo ' (after)';
+    }
+    
   }

@@ -8,8 +8,16 @@
       parent::__construct($routeParams);
     }
 
-    public function index() {
+    public function indexAction() {
       echo 'hello from Home index';
+    }
+
+    protected function before() {
+      echo '(before) ';
+    }
+
+    protected function after() {
+      echo ' (after)';
     }
     
   }

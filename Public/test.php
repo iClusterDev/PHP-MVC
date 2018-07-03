@@ -36,24 +36,27 @@
 
   // namespace Root\Test;
 
-  // class TestClass {
+  class Test {
+    private function add($num1, $num2) {
+      echo $num1 + $num2 . '<br>';
+    }
 
-  //   // to use a class not in this namespace
-  //   // you need to specify it otherwise error
-  //   // here we use DateTime in the root namespace
-  //   public function blah() {
-  //     $date = new \Date();
-  //   }
+    public function __call($method, $args) {
+      $this->before();
+      call_user_func_array([$this, $method], $args);
+      $this->after();
+    }
 
-  // }
+    private function before() {
+      echo 'Before<br>';
+    }
 
-  // $testClass1 = new Root\Test\TestClass();
+    private function after() {
+      echo 'After<br>';
+    }
+  }
 
-  // use Root\Test as Core;
+  $test = new Test();
+  $test->add(1,5);
 
-  // $testClass2 = new Core\TestClass();
-
-
-  // autoload
-  // spl_autoload_register()
 

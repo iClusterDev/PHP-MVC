@@ -119,11 +119,11 @@
         if (class_exists($controller)) {
           $controllerObj = new $controller($this->params);
           $action = $this->toCamelCase($this->params['action']);
-          if (is_callable([$controllerObj, $action])) {
+          if (preg_match('/Action$/i', $action) == 0) {
             $controllerObj->$action();
           }
           else {
-            echo "Error (Router - match): method $action in class $controller is not callable";
+            throw new \Exception("Metohd $action in controller $controller cannot be called directly. remove the Action suffix to call this method!");
           }
         }
         else {
