@@ -7,12 +7,14 @@
   <title>Home</title>
 </head>
 <body>
-  <h1>Welcome <?php echo htmlspecialchars($name); ?></h1>
+
+  <h1>Welcome {{name}}</h1>
   <p>Here are your colors:</p>
   <ul>
-    <?php foreach ($colors as $colorKey => $colorValue): ?>
-      <li><?php echo 'Color Name: ' . htmlspecialchars($colorKey); ?></li>
-    <?php endforeach; ?>  
+    {% for color in colors %}
+      <li>{{color}}</li>
+    {% endfor %}
   </ul>
+
 </body>
 </html>

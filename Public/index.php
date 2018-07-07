@@ -10,6 +10,11 @@
 /*
   Front Controller
 */
+// template engine autoload
+// and configuration
+$root = str_replace('\\', '/', dirname(__DIR__));
+require_once $root . '/Vendor/autoload.php';
+
 
 // controllers autoload
 // loads classes dynamically

@@ -15,14 +15,9 @@
 
     // indexAction
     public function indexAction() {
-      // echo 'hello from Home index';
-      View::render('Home/index.php', $data = array(
+      View::renderTemplate('Home/index.php', $data = array(
         'name' => 'Fabio',
-        'colors' => [
-          'red' => 'red',
-          'blue' => 'blue',
-          'green' => 'green'
-        ]
+        'colors' => ['red', 'green', 'blue']
       ));
     }
 
