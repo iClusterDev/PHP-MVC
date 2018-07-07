@@ -4,7 +4,6 @@
   // every request doesn't map directly to individual scripts
   // every request goes trough the front controller (central entry point for all requests)
   // also the front controller handles everything common to every request (sessions etc.)
-
   // to make this possible the request path is coded into the query string
   // localhost/index.php?/home
 
@@ -13,6 +12,9 @@
 */
 
 // controllers autoload
+// loads classes dynamically
+// whenever the object of a class is instantiated
+// the autoload requires the corresponding class 
 spl_autoload_register(function ($class) {
   $root = str_replace('\\', '/', dirname(__DIR__));
   $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
@@ -23,8 +25,9 @@ spl_autoload_register(function ($class) {
 
 
 // router setup
+// creates a new router and 
+// adds the routes
 $router = new Core\Router();
-
 $router->add('', ['controller' => 'home', 'action' => 'index']);
 $router->add('posts', ['controller' => 'posts', 'action' => 'index']);
 $router->add('{controller}/{action}');
@@ -36,5 +39,6 @@ $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 $url = $_SERVER['QUERY_STRING'];
 
 
-// dispatch
+// dispatch the request to
+// the right controller
 $router->dispatch($url);
