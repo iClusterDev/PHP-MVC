@@ -34,7 +34,7 @@ spl_autoload_register(function ($class) {
 // adds the routes
 $router = new Core\Router();
 $router->add('', ['controller' => 'home', 'action' => 'index']);
-$router->add('posts', ['controller' => 'posts', 'action' => 'index']);
+$router->add('post', ['controller' => 'post', 'action' => 'index']);
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);

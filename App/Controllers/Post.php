@@ -2,6 +2,8 @@
 
   namespace App\Controllers;
 
+  use \Core\View;
+
   // post controller
   // inherits from base controller
   class Post extends \Core\Controller {
@@ -13,7 +15,7 @@
 
     // indexAction
     public function indexAction() {
-      echo 'hello from Post index';
+      View::renderTemplate('Post/index.php');
     }
 
     // addNewAction
@@ -31,12 +33,10 @@
 
     // before action filter
     protected function before() {
-      echo '(before) ';
     }
 
     // after action filter
     protected function after() {
-      echo ' (after)';
     }
     
   }
