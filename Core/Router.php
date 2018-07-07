@@ -9,21 +9,21 @@
   // every route is mapped to a controller and an action
   class Router {
 
-    /*
+    /**
     * Associative array of route () routing table
     * @var array 
     */
     protected $routes = array();
 
 
-    /*
+    /**
     * Parameters from the matched route
     * @var array 
     */
     protected $params = array();
 
 
-    /*
+    /**
     * Converts a string with hyphens to StudlyCaps
     * e.g. post-authors -> PostAuthors
     * @param string $string the string to convert
@@ -34,7 +34,7 @@
     }
 
 
-    /*
+    /**
     * Converts a string with hyphens to camelCase
     * e.g. post-authors -> postAuthors
     * @param string $string the string to convert
@@ -45,7 +45,7 @@
     }
 
 
-    /*
+    /**
     * Add a route to the routing table
     * this converts a route into a regular expression.
     * optionally can pass a parameter array
@@ -62,7 +62,7 @@
     }
 
 
-    /*
+    /**
     * Get all the routes from the routing table
     * @return array
     */
@@ -71,7 +71,7 @@
     }
 
 
-    /*
+    /**
     * Matches the route to the routes in the routing table
     * checks the url against every added route in the router
     * if there's a match sets in the router params the controller, action and
@@ -95,7 +95,7 @@
     }
 
 
-    /*
+    /**
     * Get the currently matched parameters
     * @return array
     */
@@ -104,7 +104,7 @@
     }
 
 
-    /*
+    /**
     * dispatch the route to the corresponding controller and action
     * first removes the query string from the route stripQueryString()
     * then if match() returns true converts the controller name in studly caps (it's a class name)
@@ -143,7 +143,7 @@
     }
 
 
-    /*
+    /**
     * removes the query string from URL
     * @param  string  $url  The route URL
     * @return string  $url the url without query string
@@ -161,7 +161,7 @@
       return $url;
     }
 
-    /*
+    /**
     * get the controller namespace passed optionally in the add() method
     * this option should be in $this->params (if passed)
     * @return string  $url the url without query string

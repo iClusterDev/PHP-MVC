@@ -20,13 +20,13 @@ require_once $root . '/Vendor/autoload.php';
 // loads classes dynamically
 // whenever the object of a class is instantiated
 // the autoload requires the corresponding class 
-spl_autoload_register(function ($class) {
-  $root = str_replace('\\', '/', dirname(__DIR__));
-  $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
-  if (is_readable($file)) {
-    require $root . '/' . str_replace('\\', '/', $class) . '.php';
-  }
-});
+// spl_autoload_register(function ($class) {
+//   $root = str_replace('\\', '/', dirname(__DIR__));
+//   $file = $root . '/' . str_replace('\\', '/', $class) . '.php';
+//   if (is_readable($file)) {
+//     require $root . '/' . str_replace('\\', '/', $class) . '.php';
+//   }
+// });
 
 
 // router setup
