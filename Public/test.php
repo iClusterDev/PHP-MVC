@@ -36,27 +36,39 @@
 
   // namespace Root\Test;
 
-  class Test {
-    private function add($num1, $num2) {
-      echo $num1 + $num2 . '<br>';
-    }
+  // class Test {
+  //   private function add($num1, $num2) {
+  //     echo $num1 + $num2 . '<br>';
+  //   }
 
-    public function __call($method, $args) {
-      $this->before();
-      call_user_func_array([$this, $method], $args);
-      $this->after();
-    }
+  //   public function __call($method, $args) {
+  //     $this->before();
+  //     call_user_func_array([$this, $method], $args);
+  //     $this->after();
+  //   }
 
-    private function before() {
-      echo 'Before<br>';
-    }
+  //   private function before() {
+  //     echo 'Before<br>';
+  //   }
 
-    private function after() {
-      echo 'After<br>';
-    }
-  }
+  //   private function after() {
+  //     echo 'After<br>';
+  //   }
+  // }
 
-  $test = new Test();
-  $test->add(1,5);
+  // $test = new Test();
+  // $test->add(1,5);
+
+  // errors
+  // can be triggered using the trigger_error
+  // errors can be handled setting a function error handler and registering that function useing set_error_handler()
+
+  // exceptions
+  // when dealing with classes and objects
+  // can be thrown -> throw new Exception(myException)
+  // can be caught and dealt with using try catch blocks
+  // can also register a exeption handler function using set_exception_handler(myFunction)
+
+  // the esaiest way to handle errors and exceptions is to convert errors to exception and add an exception handler
 
 

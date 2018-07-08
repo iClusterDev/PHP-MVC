@@ -1,0 +1,10 @@
+[08-Jul-2018 18:28:42 Europe/Berlin] Uncaught Exception: Exception
+Message: 'products1 not found
+Stack Trace: #0 C:\xampp\htdocs\projects\php_mvc\Public\index.php(57): Core\Router->dispatch('products1')
+#1 {main}
+Thrown in: 'C:\xampp\htdocs\projects\php_mvc\Core\Router.php' on line 141
+[08-Jul-2018 18:28:43 Europe/Berlin] Uncaught Exception: Exception
+Message: 'favicon.ico not found
+Stack Trace: #0 C:\xampp\htdocs\projects\php_mvc\Public\index.php(57): Core\Router->dispatch('favicon.ico')
+#1 {main}
+Thrown in: 'C:\xampp\htdocs\projects\php_mvc\Core\Router.php' on line 141

@@ -18,7 +18,7 @@
         require $view;
       }
       else {
-        echo "Error - render: view file $viewFile not found";
+        throw new \Exception("view file $viewFile not found");
       }
     }
 

@@ -134,11 +134,11 @@
           }
         }
         else {
-          echo "Error (Router - match): class $controller doesn'n exists";
+          throw new \Exception("class $controller doesn'n exists");
         }
       }
       else {
-        echo 'Error (Router - match): URL not found';
+        throw new \Exception("$url not found", 404);
       }
     }
 

@@ -1,1 +1,3 @@
 /Vendor/*
+seed.sql
+/App/Config.php

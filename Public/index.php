@@ -7,14 +7,24 @@
   // to make this possible the request path is coded into the query string
   // localhost/index.php?/home
 
-/*
-  Front Controller
-*/
-// template engine autoload
-// and configuration
+/**
+ * front controller
+ */
+
+
+/**
+ * autoloader
+ */
 $root = str_replace('\\', '/', dirname(__DIR__));
 require_once $root . '/Vendor/autoload.php';
 
+
+/**
+ * error and exception handling
+ */
+error_reporting(E_ALL);
+set_error_handler('Core\Error::errorHandler');
+set_exception_handler('Core\Error::exceptionHandler');
 
 // controllers autoload
 // loads classes dynamically
@@ -29,9 +39,9 @@ require_once $root . '/Vendor/autoload.php';
 // });
 
 
-// router setup
-// creates a new router and 
-// adds the routes
+/**
+ * routing
+ */
 $router = new Core\Router();
 $router->add('', ['controller' => 'home', 'action' => 'index']);
 $router->add('post', ['controller' => 'post', 'action' => 'index']);
@@ -40,10 +50,8 @@ $router->add('{controller}/{id:\d+}/{action}');
 $router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
 
 
-// get the request url
+/**
+ * dispatcher
+ */
 $url = $_SERVER['QUERY_STRING'];
-
-
-// dispatch the request to
-// the right controller
 $router->dispatch($url);

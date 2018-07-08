@@ -3,6 +3,7 @@
   namespace App\Controllers;
 
   use \Core\View;
+  use App\Models\PostModel;
 
   // post controller
   // inherits from base controller
@@ -15,7 +16,10 @@
 
     // indexAction
     public function indexAction() {
-      View::renderTemplate('Post/index.php');
+      $posts = PostModel::getAll();
+      View::renderTemplate('Post/index.php', [
+        'posts' => $posts
+      ]);
     }
 
     // addNewAction
