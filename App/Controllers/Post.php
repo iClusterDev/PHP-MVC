@@ -17,7 +17,7 @@
     // indexAction
     public function indexAction() {
       $posts = PostModel::getAll();
-      View::renderTemplate('Post/index.php', [
+      View::renderTemplate('Post/inde.php', [
         'posts' => $posts
       ]);
     }

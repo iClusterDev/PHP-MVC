@@ -8,3 +8,27 @@ Message: 'favicon.ico not found
 Stack Trace: #0 C:\xampp\htdocs\projects\php_mvc\Public\index.php(57): Core\Router->dispatch('favicon.ico')
 #1 {main}
 Thrown in: 'C:\xampp\htdocs\projects\php_mvc\Core\Router.php' on line 141
+[08-Jul-2018 18:55:20 Europe/Berlin] Uncaught Exception: Exception
+Message: 'products1 not found
+Stack Trace: #0 C:\xampp\htdocs\projects\php_mvc\Public\index.php(57): Core\Router->dispatch('products1')
+#1 {main}
+Thrown in: 'C:\xampp\htdocs\projects\php_mvc\Core\Router.php' on line 141
+[08-Jul-2018 18:55:51 Europe/Berlin] Uncaught Exception: Exception
+Message: 'posts not found
+Stack Trace: #0 C:\xampp\htdocs\projects\php_mvc\Public\index.php(57): Core\Router->dispatch('posts')
+#1 {main}
+Thrown in: 'C:\xampp\htdocs\projects\php_mvc\Core\Router.php' on line 141
+[08-Jul-2018 18:55:58 Europe/Berlin] Uncaught Exception: Twig_Error_Loader
+Message: 'Unable to find template "Post/inde.php" (looked into: C:/xampp/htdocs/projects/php_mvc/App/Views).
+Stack Trace: #0 C:\xampp\htdocs\projects\php_mvc\Vendor\twig\twig\lib\Twig\Loader\Filesystem.php(143): Twig_Loader_Filesystem->findTemplate('Post/inde.php')
+#1 C:\xampp\htdocs\projects\php_mvc\Vendor\twig\twig\lib\Twig\Environment.php(269): Twig_Loader_Filesystem->getCacheKey('Post/inde.php')
+#2 C:\xampp\htdocs\projects\php_mvc\Vendor\twig\twig\lib\Twig\Environment.php(344): Twig_Environment->getTemplateClass('Post/inde.php', NULL)
+#3 C:\xampp\htdocs\projects\php_mvc\Vendor\twig\twig\lib\Twig\Environment.php(288): Twig_Environment->loadTemplate('Post/inde.php')
+#4 C:\xampp\htdocs\projects\php_mvc\Core\View.php(37): Twig_Environment->render('Post/inde.php', Array)
+#5 C:\xampp\htdocs\projects\php_mvc\App\Controllers\Post.php(21): Core\View::renderTemplate('Post/inde.php', Array)
+#6 [internal function]: App\Controllers\Post->indexAction()
+#7 C:\xampp\htdocs\projects\php_mvc\Core\Controller.php(28): call_user_func_array(Array, Array)
+#8 C:\xampp\htdocs\projects\php_mvc\Core\Router.php(130): Core\Controller->__call('index', Array)
+#9 C:\xampp\htdocs\projects\php_mvc\Public\index.php(57): Core\Router->dispatch('post')
+#10 {main}
+Thrown in: 'C:\xampp\htdocs\projects\php_mvc\Vendor\twig\twig\lib\Twig\Loader\Filesystem.php' on line 226

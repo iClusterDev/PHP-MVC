@@ -52,13 +52,7 @@
         ini_set('error_log', $logFile);
         error_log($message);
 
-        if ($errorCode === 404) {
-          echo "<h1>Page not found</h1>";  
-        }
-        else {
-          echo "<h1>An Error Occurred</h1>";
-          echo "<p>Please try again later</p>";
-        }
+        View::renderTemplate("$errorCode.php");
       }
     }
 
